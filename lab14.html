@@ -8,64 +8,72 @@
 </head>
 <body>
     <div class="profile" id="profile">
-        <div class="notify"><p>1</p></div>
+        <div class="notify">
+          <p>1</p>
+        </div>
     </div>
     <h1 id="user">Username, ok</h1>
-    <label>Set username</label><input type="text" id="name"><button onclick="setName()">set</button>
-    <p><label>Set image</label><input type="text" id="urlprofile"><button onclick=setImg()>set</button>
+    <label>Set Username </label><input type="text" id="name"><button onclick="setName()">set</button>
+    <h1></h1>
+    <label>Set The Profile IMG URL </label><input type="text" id="img"><button onclick="setImg()">set</button>
+    <h1></h1>
     <div>
-        <input type="text">
-        <input type="text"><button>add</button><button>export</button>
+        <input type="text" id="phonename">
+        <input type="text" id="phone"><button id="tel1" onclick="addParagraph()">add</button><button id="tel2">export</button>
+    
     </div>
+    <table border="1" style="width: 500px;">
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+      </tr>
+      <tbody id="phonetable">
+
+      </tbody>
+    </table>
 
     <script>
         const username = document.getElementById("user");
         const input = document.getElementById("name");
-        const profile = document.getElementById("profile");
-        const urlprofile = document.getElementById("urlprofile");
-        const newdiv = document.getElementsByClassName("container")[0];
+        const img = document.getElementById("img");
+        const profile = document.getElementById("profile")
+        const tel = []
 
         function setName(){
             username.textContent = input.value + ", ok";
         }
         function setImg(){
-            profile.style.backgroundImage = "url(" + urlprofile.value + ")";
-            console.log(urlprofile.value);
-            urlprofile.value = "";
+            profile.style.backgroundImage = "url(" + img.value + ")";
+            console.log(img.value);
+            img.value = "";
         }
         function addParagraph(){
-            const newpara = document.createElement("p");
-            newpara.textContent = "new paragraph";
-            newdiv[0].appendChild(newpara);
+            const phonename =document.getElementById("phonename").value;
+            const phone = document.getElementById("phone").value;
+            tel.push({
+              name: phonename,
+              phone: phone
+            });
+            let tbody = "";
+
+            for (let i = 0; i < tel.length; i++){
+              const t = tel[i];
+              tbody += `<tr>
+                <td>${i + 1}</td>
+                <td>${t.name}</td>
+                    <td>${t.phone}</td>
+                </tr>`
+            }
+
+            document.getElementById("phonetable").innerHTML = tbody;
+
+            // document.getElementById("phonetable")
+            // const newpara = document.createElement("p");
+            // newpara.textContect = "new paragraph";
+            // newdiv[0].appendChild(newpara);
         }
     </script>
-    <style>
-        table, th, td {
-          border:1px solid black;
-        }
-        </style>
-        <body>
-        
-        <h2>A basic HTML table</h2>
-        
-        <table style="width:100%">
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Phone</th>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-          </tr>
-        </table>
-        
-        <p>To understand the example better, we have added borders to the table.</p>
 </body>
+
 </html>
