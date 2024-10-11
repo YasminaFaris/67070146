@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="profile" id="profile">
+        <div class="notify"><p>1</p></div>
+    </div>
+    <h1 id="user">Username, ok</h1>
+    <label>Set username</label><input type="text" id="name"><button onclick="setName()">set</button>
+    <p><label>Set image</label><input type="text" id="urlprofile"><button onclick=setImg()>set</button>
+    <div>
+        <input type="text">
+        <input type="text"><button>add</button><button>export</button>
+    </div>
+
+    <script>
+        const username = document.getElementById("user");
+        const input = document.getElementById("name");
+        const profile = document.getElementById("profile");
+        const urlprofile = document.getElementById("urlprofile");
+        const newdiv = document.getElementsByClassName("container")[0];
+
+        function setName(){
+            username.textContent = input.value + ", ok";
+        }
+        function setImg(){
+            profile.style.backgroundImage = "url(" + urlprofile.value + ")";
+            console.log(urlprofile.value);
+            urlprofile.value = "";
+        }
+        function addParagraph(){
+            const newpara = document.createElement("p");
+            newpara.textContent = "new paragraph";
+            newdiv[0].appendChild(newpara);
+        }
+    </script>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+        <body>
+        
+        <h2>A basic HTML table</h2>
+        
+        <table style="width:100%">
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Phone</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+          </tr>
+        </table>
+        
+        <p>To understand the example better, we have added borders to the table.</p>
+</body>
+</html>
